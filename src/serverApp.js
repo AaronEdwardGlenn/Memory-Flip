@@ -1,11 +1,11 @@
-require('dotenv').config();
-require('./lib/utils/connect')();
+const express = require('express');
+const app = express();
 
-const app = require('./lib/app');
+app.use(express.json());
 
-const PORT = process.env.PORT || 8080;
+app.use('./api/v1/auth', require('./routes/userRoutes'));
 
-app.listen(PORT, () => {
-  // eslint-disable-next-line no-console
-  console.log(`Started on ${PORT}`);
-});
+app.use(require('./middleware/not-found'));
+app.use(require('./middleware/error'));
+
+module.exports = app;
