@@ -1,17 +1,14 @@
 const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
-  imageName: {
+  user: {
     type: String,
     required: true
   },
-  url: {
+  favoriteUrl: {
     type: String,
     required: true
-  },
-  description: {
-    type: String
   }
 });
 
-module.exports = mongoose.model('ListItem', schema);
+module.exports = mongoose.model('Favorites', schema);

@@ -3,7 +3,7 @@ const User = require('../models/User');
 
 
 module.exports = Router()
-  .get('/signup', (req, res, next) => {
+  .post('/signup', (req, res, next) => {
     User
       .create(req.body)
       .then(user => res.send(user))
@@ -18,7 +18,7 @@ module.exports = Router()
   .get('/:id', (req, res, next) => {
     User
       .findById(req.params.id)
-      .then(movie => res.send(movie))
+      .then(user => res.send(user))
       .catch(next);
   })
   .patch('/:id', (req, res, next) => {
